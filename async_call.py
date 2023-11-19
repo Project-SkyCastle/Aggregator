@@ -40,6 +40,6 @@ async def main():
         print()
 
 
-for i in range(2):
+for i in range(5):
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
