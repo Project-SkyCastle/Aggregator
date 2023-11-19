@@ -13,14 +13,22 @@ resources = [
         "url": 'http://www.twitter.com'
     },
     {
-        "resource": "Google",
-        "url": 'http://www.google.com'
+        "resource": "ExternalAPI",
+        "url": 'http://ec2-3-27-170-134.ap-southeast-2.compute.amazonaws.com:8012/price/MSFT'
     },
     {
-        "resource": "Facebook",
-        "url": 'http://www.facebook.com'
+        "resource": "Google",
+        "url": 'http://www.google.com'
     }
 ]
+
+# stock_list = ['MSFT', 'GOOG', 'META']
+# resources = [
+#     {
+#         "resource": stk,
+#         "url": "http://ec2-3-27-170-134.ap-southeast-2.compute.amazonaws.com:8012/price/" + stk
+#     } for stk in stock_list
+# ]
 
 response_order = None
 
