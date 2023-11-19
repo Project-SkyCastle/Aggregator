@@ -12,10 +12,10 @@ with open("./resources.json", 'r') as openfile:
 async def fetch(session, resource):
     global response_order
     url = resource["url"]
-    print("Calling URL = ", url)
+    print("Calling URL =", url)
     async with session.get(url) as response:
         t = await response.text()
-        print("Returned URL ", url)
+        print("Returned URL =", url)
         result = {
             "resource": resource["resource"],
             "data": t
@@ -29,13 +29,13 @@ async def main():
     async with aiohttp.ClientSession() as session:
         response_order = []
         s_time = time.time()
-        print("=== Request Order: ", [res["resource"] for res in resources], " ===")
+        print("=== Request Order:", [res["resource"] for res in resources], "===")
         tasks = [asyncio.ensure_future(fetch(session, res)) for res in resources]
         responses = await asyncio.gather(*tasks)
         full_result = {}
         for response in responses:
             full_result[response["resource"]] = response["data"]
-        print("=== Response Order: ", response_order, " ===")
+        print("=== Response Order:", response_order, "===")
         print("Time used: ", time.time() - s_time)
         print()
 
