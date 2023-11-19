@@ -11,7 +11,7 @@ with open("./resources.json", 'r') as openfile:
 def fetch(session, resource):
     global response_order
     url = resource["url"]
-    # print("Calling URL = ", url)
+    print("Calling URL = ", url)
     with session.get(url) as response:
         # t = response.text()
         t = response.text

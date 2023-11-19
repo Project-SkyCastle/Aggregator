@@ -12,6 +12,7 @@ with open("./resources.json", 'r') as openfile:
 async def fetch(session, resource):
     global response_order
     url = resource["url"]
+    print("Calling URL = ", url)
     async with session.get(url) as response:
         t = await response.text()
         print("URL ", url, "returned")
