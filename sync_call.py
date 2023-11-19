@@ -15,7 +15,7 @@ def fetch(session, resource):
     with session.get(url) as response:
         # t = response.text()
         t = response.text
-        # print("URL ", url, "returned")
+        print("URL ", url, "returned")
         result = {
             "resource": resource["resource"],
             "data": t
@@ -36,6 +36,7 @@ def main():
             full_result[response["resource"]] = response["data"]
         print("Response Order: ", response_order)
         print("Time used: ", time.time() - s_time)
+        print()
 
 
 for i in range(1):

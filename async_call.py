@@ -14,6 +14,7 @@ async def fetch(session, resource):
     url = resource["url"]
     async with session.get(url) as response:
         t = await response.text()
+        print("URL ", url, "returned")
         result = {
             "resource": resource["resource"],
             "data": t
@@ -35,6 +36,7 @@ async def main():
             full_result[response["resource"]] = response["data"]
         print("Response Order: ", response_order)
         print("Time used: ", time.time() - s_time)
+        print()
 
 
 for i in range(2):
