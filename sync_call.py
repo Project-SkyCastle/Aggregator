@@ -39,5 +39,5 @@ def main():
         print()
 
 
-for i in range(2):
+for i in range(1):
     main()
