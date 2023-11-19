@@ -3,34 +3,10 @@ import aiohttp
 import time
 import json
 
-resources = [
-    {
-        "resource": "Columbia",
-        "url": "https://www.columbia.edu/"
-    },
-    {
-        "resource": "Twitter",
-        "url": 'http://www.twitter.com'
-    },
-    {
-        "resource": "ExternalAPI",
-        "url": 'http://ec2-3-27-170-134.ap-southeast-2.compute.amazonaws.com:8012/price/MSFT'
-    },
-    {
-        "resource": "Google",
-        "url": 'http://www.google.com'
-    }
-]
-
-# stock_list = ['MSFT', 'GOOG', 'META']
-# resources = [
-#     {
-#         "resource": stk,
-#         "url": "http://ec2-3-27-170-134.ap-southeast-2.compute.amazonaws.com:8012/price/" + stk
-#     } for stk in stock_list
-# ]
-
 response_order = None
+resources = None
+with open("./resources.json", 'r') as openfile:
+    resources = json.load(openfile)
 
 
 async def fetch(session, resource):
@@ -61,6 +37,6 @@ async def main():
         print("Time used: ", time.time() - s_time)
 
 
-for i in range(10):
+for i in range(2):
     loop = asyncio.get_event_loop()
     loop.run_until_complete(main())
