@@ -4,7 +4,6 @@ import nest_asyncio
 import json
 import util
 
-# asyncio.set_event_loop(asyncio.new_event_loop())
 nest_asyncio.apply()
 
 
