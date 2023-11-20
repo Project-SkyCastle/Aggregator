@@ -1,16 +1,14 @@
 import asyncio
 import aiohttp
-import time
+import nest_asyncio
 import json
+import util
 
-response_order = None
-resources = None
-with open("./resources.json", 'r') as openfile:
-    resources = json.load(openfile)
+# asyncio.set_event_loop(asyncio.new_event_loop())
+nest_asyncio.apply()
 
 
-async def fetch(session, resource):
-    global response_order
+async def async_fetch(session, resource):
     url = resource["url"]
     print("Calling URL =", url)
     async with session.get(url) as response:
@@ -18,28 +16,22 @@ async def fetch(session, resource):
         print("Returned URL =", url)
         result = {
             "resource": resource["resource"],
-            "data": t
+            "data": len(t)
         }
-        response_order += [resource["resource"]]
+        util.response_order += [resource["resource"]]
     return result
 
 
-async def main():
-    global response_order
+async def async_aggregate(resources):
     async with aiohttp.ClientSession() as session:
-        response_order = []
-        s_time = time.time()
-        print("=== Request Order:", [res["resource"] for res in resources], "===")
-        tasks = [asyncio.ensure_future(fetch(session, res)) for res in resources]
+        tasks = [asyncio.ensure_future(async_fetch(session, res)) for res in resources]
         responses = await asyncio.gather(*tasks)
         full_result = {}
         for response in responses:
             full_result[response["resource"]] = response["data"]
-        print("=== Response Order:", response_order, "===")
-        print("Time used: ", time.time() - s_time)
-        print()
+    return full_result
 
 
-for i in range(10):
+def async_request(resources):
     loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    return loop.run_until_complete(async_aggregate(resources))

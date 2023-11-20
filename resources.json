@@ -1,6 +1,5 @@
 [
   {"resource": "Columbia", "url": "https://www.columbia.edu/"},
-  {"resource": "Stock", "url": "http://ec2-3-25-215-119.ap-southeast-2.compute.amazonaws.com:8012/price/MSFT"},
   {"resource": "Twitter", "url": "http://www.twitter.com"},
   {"resource": "Google", "url": "http://www.google.com"}
 ]
