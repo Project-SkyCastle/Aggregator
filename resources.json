@@ -1,4 +1,4 @@
 [
-  {"resource": "Microservice3-Subscription", "url": "http://54.242.146.56:8012/subscription/"},
-  {"resource": "Microservice1-User", "url": "http://ec2-3-144-38-237.us-east-2.compute.amazonaws.com:8012/user/"}
+  {"resource": "MS-3-Subscription", "url": "http://54.242.146.56:8012/subscription/"},
+  {"resource": "MS-1-User", "url": "http://ec2-3-144-38-237.us-east-2.compute.amazonaws.com:8012/user/"}
 ]
