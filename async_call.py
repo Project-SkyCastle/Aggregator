@@ -11,7 +11,7 @@ async def async_fetch(session, resource):
     url = resource["url"]
     print("Calling URL =", url)
     async with session.get(url) as response:
-        t = await response.text()
+        t = await response.json()
         print("Returned URL =", url)
         result = {
             "resource": resource["resource"],

@@ -25,7 +25,7 @@ async def loop_sync_call(num_loop: int):
         print("=== Request Order:", [res["resource"] for res in util.resources], "===")
         util.response_order = []
         result = sync_call.sync_request(util.resources)
-        results += [result]
+        results += [{'Sync Loop ' + str(i): result}]
         print("Result: ", result)
         print("=== Response Order:", util.response_order, "===")
         print("Time used: ", time.time() - s_time)
@@ -34,14 +34,14 @@ async def loop_sync_call(num_loop: int):
 
 
 @app.get("/async/{num_loop}")
-async def loop_sync_call(num_loop: int):
+async def loop_async_call(num_loop: int):
     results = []
     for i in range(num_loop):
         s_time = time.time()
         print("=== Request Order:", [res["resource"] for res in util.resources], "===")
         util.response_order = []
         result = async_call.async_request(util.resources)
-        results += [result]
+        results += [{'Async Loop ' + str(i): result}]
         print("Result: ", result)
         print("=== Response Order:", util.response_order, "===")
         print("Time used: ", time.time() - s_time)

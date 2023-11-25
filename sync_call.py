@@ -7,7 +7,7 @@ def sync_fetch(session, resource):
     url = resource["url"]
     print("Calling URL =", url)
     with session.get(url) as response:
-        t = response.text
+        t = response.json()
         print("Returned URL =", url)
         result = {
             "resource": resource["resource"],
