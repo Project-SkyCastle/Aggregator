@@ -1,5 +1,5 @@
 [
-  {"resource": "Columbia", "url": "https://www.columbia.edu/"},
+  {"resource": "Microservice1-User", "url": "http://ec2-3-144-38-237.us-east-2.compute.amazonaws.com:8012/user/"},
   {"resource": "Twitter", "url": "http://www.twitter.com"},
   {"resource": "Google", "url": "http://www.google.com"}
 ]
